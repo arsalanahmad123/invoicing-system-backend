@@ -23,8 +23,8 @@ const signup = async (req, res) => {
             email,
             password: hashedPassword,
         })
-        generateToken(user._id, res)
-        res.status(201).json({ data: user })
+        const token = generateToken(user._id)
+        res.status(201).json({ data: user, access_token: token })
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
@@ -41,7 +41,7 @@ const login = async (req, res) => {
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Invalid credentials' })
         }
-        generateToken(user._id, res)
+        const token = generateToken(user._id)
 
         const data = {
             _id: user._id,
@@ -49,22 +49,10 @@ const login = async (req, res) => {
             email: user.email,
         }
 
-        res.status(200).json(data)
+        res.status(200).json({ data, access_token: token })
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 }
 
-const logout = async (req, res) => {
-    try {
-        res.clearCookie('jwt')
-
-        res.status(200).json({ message: 'Logged out successfully' })
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        })
-    }
-}
-
-module.exports = { signup, login, logout }
+module.exports = { signup, login }

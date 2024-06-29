@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
 const connectDB = require('./database/db')
@@ -8,9 +7,11 @@ const authRouter = require('./routes/auth.routes')
 const invoiceRouter = require('./routes/invoice.routes')
 
 app.use(express.json())
-app.use(cookieParser())
 const corsOptions = {
-    origin: ['https://invoicing-system-frontend-rho.vercel.app'],
+    origin: [
+        'https://invoicing-system-frontend-rho.vercel.app',
+        'http://localhost:5173',
+    ],
     credentials: true,
 }
 app.use(cors(corsOptions))
