@@ -22,6 +22,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/invoice', invoiceRouter)
 
 app.listen(PORT, () => {
+    console.log('before connection of db')
     connectDB()
     console.log(`Server is running on port ${PORT}`)
 })
