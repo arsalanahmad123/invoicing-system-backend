@@ -8,10 +8,7 @@ const invoiceRouter = require('./routes/invoice.routes')
 
 app.use(express.json())
 const corsOptions = {
-    origin: [
-        'https://invoicing-system-frontend-rho.vercel.app',
-        'http://localhost:5173',
-    ],
+    origin: ['https://invoice.geminie.blog', 'http://localhost:5173'],
     credentials: true,
 }
 app.use(cors(corsOptions))
