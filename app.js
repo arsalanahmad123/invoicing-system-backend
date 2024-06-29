@@ -21,8 +21,8 @@ const PORT = process.env.PORT || 5000
 app.use('/api/auth', authRouter)
 app.use('/api/invoice', invoiceRouter)
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log('before connection of db')
-    connectDB()
+    await connectDB()
     console.log(`Server is running on port ${PORT}`)
 })
