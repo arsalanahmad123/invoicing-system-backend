@@ -5,10 +5,9 @@ const jwtOptions = {
 }
 
 const cookieOptions = {
-    maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
+    maxAge: 1 * 24 * 60 * 60 * 1000,
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: 'Lax',
 }
 
 const generateToken = (userId, res) => {
