@@ -24,12 +24,14 @@ const getInvoice = async (req, res) => {
 
 const createInvoice = async (req, res) => {
     try {
-        const { to, address, total } = req.body
+        const { to, address, total, quantities, subtotal } = req.body
 
         const invoice = new Invoice({
             to,
             address,
             total,
+            quantities,
+            subtotal,
         })
 
         await invoice.save()

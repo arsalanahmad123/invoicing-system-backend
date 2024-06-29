@@ -35,6 +35,17 @@ const invoiceSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        quantities: [
+            {
+                quantity: Number,
+                description: String,
+                unitprice: Number,
+            },
+        ],
+        subtotal: {
+            type: Number,
+            required: true,
+        },
     },
     { timestamps: true },
 )
